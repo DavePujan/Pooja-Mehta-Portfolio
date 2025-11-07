@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Pooja's Gallery — Artist Portfolio</title>
+    <meta name="description"
+        content="Explore Pooja Mehta's contemporary art portfolio, featuring evocative paintings that blend color, texture, and light. Discover her unique artistic vision and latest works." />
+    <!-- fevicon logo -->
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Crimson+Pro:wght@400;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header>
+        <div class="brand">
+            <img src="/images/logo.png" alt="Pooja's Gallery Logo" class="logo" />
+            <span>Pooja's Gallery</span>
+        </div>
+        <nav>
+            <a href="#works">Works</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+
+    <section class="hero">
+        <div>
+            <h1>Contemporary Art that Breathes Emotion</h1>
+            <p>
+                Discover a collection of modern works blending color, texture, and
+                light in poetic harmony.
+            </p>
+            <a href="#works" class="cta">Explore Gallery</a>
+        </div>
+        <img src="/images/hero.png" alt="Hero Artwork" />
+    </section>
+
+    <section id="works">
+        <h2 class="section__title">Gallery</h2>
+        <p class="section__lead">
+            Dynamic collection powered by JSON — add artworks instantly.
+        </p>
+        <div id="worksGrid">
+            <div id="gridStatus" class="status">Loading gallery…</div>
+        </div>
+    </section>
+
+    <!-- ===== About Section ===== -->
+    <section id="about" class="about-section">
+        <div class="about-grid">
+            <figure class="about-image">
+                <img src="/images/portrait.png" alt="Portrait of the artist" />
+            </figure>
+            <div class="about-text">
+                <h2>About the Artist</h2>
+                <p>
+                    Pooja Mehta paints from a place where emotion meets stillness. Her work explores the unseen — the
+                    quiet stories within color, light, and texture. Each piece is a meditation, inviting the viewer to
+                    pause and feel.
+                </p>
+                <p>
+                    With a Fine Arts background and exhibitions across India, Pooja’s art continues to find homes in
+                    collections both local and international.
+                </p>
+                <a href="/Uliana_CV.pdf" class="cta" download>Download CV</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Contact Section ===== -->
+    <section id="contact">
+        <div class="contact-container">
+            <div class="contact-header">
+                <h2>Contact Us</h2>
+                <p>I hope these artworks inspired you as much as creating them inspired me. Feel free to reach out or
+                    share your thoughts — creativity grows best when shared.</p>
+            </div>
+
+            <form action="https://api.web3forms.com/submit" method="POST" id="form" novalidate>
+                <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+                <input type="hidden" name="subject" value="New Submission from Web3Forms" />
+                <input type="checkbox" name="botcheck" style="display: none" />
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" name="name" id="name" placeholder="John Doe" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" name="email" id="email" placeholder="you@email.com" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="text" name="phone" id="phone" placeholder="+1 (555) 1234-567" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Art Query</label>
+                    <textarea rows="5" name="message" id="message"
+                        placeholder="Hey! We’d love to know — which art form are you most interested in?"
+                        required></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Send Message</button>
+                <p id="result" class="form-result"></p>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        © <span id="year"></span> Pooja's Gallery. All rights reserved.
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

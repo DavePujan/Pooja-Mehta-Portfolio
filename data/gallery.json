@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Aurora",
+    "year": 2024,
+    "medium": "Oil on canvas, 60×80 cm",
+    "thumb": "/images/work-01.png",
+    "image": "/images/work-01.png"
+  },
+  {
+    "title": "Echoes",
+    "year": 2025,
+    "medium": "Mixed media, 70×90 cm",
+    "thumb": "/images/work-02.png",
+    "image": "/images/work-02@2x.jpg"
+  },
+  {
+    "title": "Nocturne",
+    "year": 2023,
+    "medium": "Acrylic on wood, 50×50 cm",
+    "thumb": "/images/work-03.png",
+    "image": "/images/work-03@2x.jpg"
+  }
+]
