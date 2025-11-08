@@ -200,6 +200,79 @@ nav a:hover {
     font-size: 0.9rem;
 }
 
+/* ===== Instagram Link inside Cards ===== */
+.insta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: var(--accent);
+  text-decoration: none;
+  margin: 0.3rem 0 0.6rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.insta-link:hover {
+  color: var(--accent-glow);
+  transform: translateY(-2px);
+}
+
+.insta-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--accent);
+  flex-shrink: 0;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.insta-link:hover .insta-icon {
+  transform: scale(1.1);
+  color: var(--accent-glow);
+}
+
+/* ===== Success Popup Animation ===== */
+.success-popup {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 9999;
+}
+
+.success-popup.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.popup-content {
+  background: rgba(25, 25, 25, 0.9);
+  border: 1px solid var(--accent);
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 0 25px var(--accent-glow);
+  color: var(--accent);
+  text-align: center;
+  transform: scale(0.9);
+  animation: popupScale 0.4s ease forwards;
+}
+
+.popup-icon {
+  font-size: 1.6rem;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+@keyframes popupScale {
+  0% { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+
 /* ===== Responsive Adjustments ===== */
 
 /* Medium Screens (tablets & small laptops) */

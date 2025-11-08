@@ -14,30 +14,41 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
    1️⃣ GALLERY LOADER
 ---------------------------------------------------------- */
 function renderGrid(data) {
-    const grid = document.getElementById("worksGrid");
-    if (!grid) return;
+  const grid = document.getElementById("worksGrid");
+  if (!grid) return;
 
-    if (!Array.isArray(data) || data.length === 0) {
-        grid.innerHTML = '<div class="status">No artworks found.</div>';
-        return;
-    }
+  if (!Array.isArray(data) || data.length === 0) {
+    grid.innerHTML = '<div class="status">No artworks found.</div>';
+    return;
+  }
 
-    grid.innerHTML = data
-        .map(
-            (item) => `
+  grid.innerHTML = data
+    .map(
+      (item) => `
       <article class="card">
         <a href="${item.image || item.thumb}" target="_blank" rel="noopener">
           <img class="card__img" src="${item.thumb || item.image}" alt="${(item.title || "Untitled")
-                    .replace(/"/g, "&quot;")}" />
+        .replace(/"/g, "&quot;")}" />
         </a>
         <div class="card__body">
           <h3 class="card__title">${item.title || "Untitled"}</h3>
-          <div class="card__meta">${item.medium || ""}${item.medium && item.year ? " — " : ""}${item.year || ""}</div>
+          ${
+            item.insta
+              ? `<a href="${item.insta}" target="_blank" rel="noopener" class="insta-link">
+                  <img src="/icons/insta.svg" alt="Instagram" class="insta-icon" />
+                  <span>Visit on Instagram</span>
+                </a>`
+              : ""
+          }
+          <div class="card__meta">${item.medium || ""}${
+        item.medium && item.year ? " — " : ""
+      }${item.year || ""}</div>
         </div>
       </article>`
-        )
-        .join("");
+    )
+    .join("");
 }
+
 
 async function loadGallery() {
     try {
@@ -125,5 +136,14 @@ if (contactForm) {
                 btn.textContent = "Send Message";
             }
         }
+        // Show gold success popup
+const popup = document.getElementById("success-popup");
+popup.classList.add("active");
+
+// Auto-hide after 2 seconds
+setTimeout(() => {
+  popup.classList.remove("active");
+}, 2000);
+
     });
 }
