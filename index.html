@@ -79,48 +79,56 @@
             </div>
         </div>
     </section>
+<!-- ===== Contact Section ===== -->
+<section id="contact">
+  <div class="contact-container">
+    <div class="contact-header">
+      <h2>Contact Us</h2>
+      <p>
+        I hope these artworks inspired you as much as creating them inspired me.
+        Feel free to reach out or share your thoughts — creativity grows best
+        when shared.
+      </p>
+    </div>
 
-    <!-- ===== Contact Section ===== -->
-    <section id="contact">
-        <div class="contact-container">
-            <div class="contact-header">
-                <h2>Contact Us</h2>
-                <p>I hope these artworks inspired you as much as creating them inspired me. Feel free to reach out or
-                    share your thoughts — creativity grows best when shared.</p>
-            </div>
+    <form id="form" novalidate>
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="from_name" placeholder="John Doe" required />
+      </div>
 
-            <form action="https://api.web3forms.com/submit" method="POST" id="form" novalidate>
-                <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
-                <input type="hidden" name="subject" value="New Submission from Web3Forms" />
-                <input type="checkbox" name="botcheck" style="display: none" />
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="from_email" placeholder="you@email.com" required />
+      </div>
 
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" name="name" id="name" placeholder="John Doe" required />
-                </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" name="phone" placeholder="+1 (555) 1234-567" required />
+      </div>
 
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" name="email" id="email" placeholder="you@email.com" required />
-                </div>
+      <div class="form-group">
+        <label for="message">Art Query</label>
+        <textarea
+          rows="5"
+          id="message"
+          name="message"
+          placeholder="Hey! We’d love to know — which art form are you most interested in?"
+          required
+        ></textarea>
+      </div>
 
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="text" name="phone" id="phone" placeholder="+1 (555) 1234-567" required />
-                </div>
+      <button type="submit" class="btn-submit">Send Message</button>
+      <p id="result" class="form-result"></p>
+    </form>
+  </div>
+</section>
 
-                <div class="form-group">
-                    <label for="message">Art Query</label>
-                    <textarea rows="5" name="message" id="message"
-                        placeholder="Hey! We’d love to know — which art form are you most interested in?"
-                        required></textarea>
-                </div>
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-                <button type="submit" class="btn-submit">Send Message</button>
-                <p id="result" class="form-result"></p>
-            </form>
-        </div>
-    </section>
+<!-- Add EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
     <footer>
         © <span id="year"></span> Pooja's Gallery. All rights reserved.
