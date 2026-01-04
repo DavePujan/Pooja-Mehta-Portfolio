@@ -26,10 +26,10 @@ function renderGrid(data) {
     .map(
       (item) => `
       <article class="card">
-        <a href="${item.image || item.thumb}" target="_blank" rel="noopener">
+        <div class="card__img-wrapper" onclick="openImagePopup('${item.image || item.thumb}')">
           <img class="card__img" src="${item.thumb || item.image}" alt="${(item.title || "Untitled")
-        .replace(/"/g, "&quot;")}" />
-        </a>
+          .replace(/"/g, "&quot;")}" />
+        </div>
         <div class="card__body">
           <div class="card__header">
              <h3 class="card__title">${item.title || "Untitled"}</h3>
@@ -38,17 +38,15 @@ function renderGrid(data) {
           
           <div class="card__price">${item.price || ""}</div>
 
-          ${
-            item.insta
-              ? `<a href="${item.insta}" target="_blank" rel="noopener" class="insta-link">
+          ${item.insta
+          ? `<a href="${item.insta}" target="_blank" rel="noopener" class="insta-link">
                   <img src="/icons/insta.svg" alt="Instagram" class="insta-icon" />
                   <span>Visit on Instagram</span>
                 </a>`
-              : ""
-          }
-          <div class="card__meta">${item.medium || ""}${
-        item.medium && item.year ? " — " : ""
-      }${item.year || ""}</div>
+          : ""
+        }
+          <div class="card__meta">${item.medium || ""}${item.medium && item.year ? " — " : ""
+        }${item.year || ""}</div>
         </div>
       </article>`
     )
@@ -57,30 +55,30 @@ function renderGrid(data) {
 
 
 async function loadGallery() {
-    try {
-        const response = await fetch("./data/gallery.json");
-        if (!response.ok) throw new Error("Failed to load gallery.json");
-        const data = await response.json();
-        renderGrid(data);
-    } catch (error) {
-        console.warn("Falling back to sample data:", error);
-        renderGrid([
-            {
-                title: "Aurora",
-                year: 2024,
-                medium: "Oil on canvas, 60×80 cm",
-                image: "/images/work-01@2x.jpg",
-                thumb: "/images/work-01.jpg",
-            },
-            {
-                title: "Echoes",
-                year: 2025,
-                medium: "Mixed media, 70×90 cm",
-                image: "/images/work-02@2x.jpg",
-                thumb: "/images/work-02.jpg",
-            },
-        ]);
-    }
+  try {
+    const response = await fetch("./data/gallery.json");
+    if (!response.ok) throw new Error("Failed to load gallery.json");
+    const data = await response.json();
+    renderGrid(data);
+  } catch (error) {
+    console.warn("Falling back to sample data:", error);
+    renderGrid([
+      {
+        title: "Aurora",
+        year: 2024,
+        medium: "Oil on canvas, 60×80 cm",
+        image: "/images/work-01@2x.jpg",
+        thumb: "/images/work-01.jpg",
+      },
+      {
+        title: "Echoes",
+        year: 2025,
+        medium: "Mixed media, 70×90 cm",
+        image: "/images/work-02@2x.jpg",
+        thumb: "/images/work-02.jpg",
+      },
+    ]);
+  }
 }
 loadGallery();
 
@@ -89,67 +87,111 @@ loadGallery();
    ========================================================== */
 
 (function () {
-    emailjs.init("mVNxCxZ0CqVbcyiIA"); // Replace with your EmailJS Public Key
+  emailjs.init("mVNxCxZ0CqVbcyiIA"); // Replace with your EmailJS Public Key
 })();
 
 const contactForm = document.getElementById("form");
 
 if (contactForm) {
-    contactForm.addEventListener("submit", async (e) => {
-        e.preventDefault();
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-        const btn = contactForm.querySelector(".btn-submit");
-        const result = document.getElementById("result");
-        if (btn) {
-            btn.disabled = true;
-            btn.textContent = "Sending...";
-        }
-        if (result) result.textContent = "";
+    const btn = contactForm.querySelector(".btn-submit");
+    const result = document.getElementById("result");
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = "Sending...";
+    }
+    if (result) result.textContent = "";
 
-        try {
-            const formData = {
-                from_name: document.getElementById("name").value,
-                from_email: document.getElementById("email").value,
-                phone: document.getElementById("phone").value,
-                message: document.getElementById("message").value,
-            };
+    try {
+      const formData = {
+        from_name: document.getElementById("name").value,
+        from_email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        message: document.getElementById("message").value,
+      };
 
 
 
-            const response = await emailjs.send(
-                "service_6z7jlvl",   // replace with EmailJS service ID
-                "template_huh9i8i",  // replace with EmailJS template ID
-                formData
-            );
+      const response = await emailjs.send(
+        "service_6z7jlvl",   // replace with EmailJS service ID
+        "template_huh9i8i",  // replace with EmailJS template ID
+        formData
+      );
 
-            console.log("EmailJS response:", response);
+      console.log("EmailJS response:", response);
 
-            if (response.status === 200) {
-                result.style.color = "#9ef79e";
-                result.textContent = "Message sent successfully!";
-                contactForm.reset();
-            } else {
-                result.style.color = "#f88";
-                result.textContent = "Unexpected error. Please try again.";
-            }
-        } catch (error) {
-            console.error("EmailJS Error:", error);
-            result.style.color = "#f88";
-            result.textContent = "Network error. Please check your connection.";
-        } finally {
-            if (btn) {
-                btn.disabled = false;
-                btn.textContent = "Send Message";
-            }
-        }
-        // Show gold success popup
-const popup = document.getElementById("success-popup");
-popup.classList.add("active");
+      if (response.status === 200) {
+        result.style.color = "#9ef79e";
+        result.textContent = "Message sent successfully!";
+        contactForm.reset();
+      } else {
+        result.style.color = "#f88";
+        result.textContent = "Unexpected error. Please try again.";
+      }
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      result.style.color = "#f88";
+      result.textContent = "Network error. Please check your connection.";
+    } finally {
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = "Send Message";
+      }
+    }
+    // Show gold success popup
+    const popup = document.getElementById("success-popup");
+    popup.classList.add("active");
 
-// Auto-hide after 2 seconds
-setTimeout(() => {
-  popup.classList.remove("active");
-}, 2000);
+    // Auto-hide after 2 seconds
+    setTimeout(() => {
+      popup.classList.remove("active");
+    }, 2000);
 
-    });
+  });
 }
+
+
+/* ==========================================================
+   IMAGE POPUP HANDLER
+   ========================================================== */
+const imagePopup = document.getElementById("image-popup");
+const popupImg = document.getElementById("popup-img");
+const closeBtn = document.querySelector(".close-btn");
+
+function openImagePopup(src) {
+  if (imagePopup && popupImg) {
+    popupImg.src = src;
+    imagePopup.classList.add("active");
+  }
+}
+
+function closeImagePopup() {
+  if (imagePopup) {
+    imagePopup.classList.remove("active");
+    setTimeout(() => {
+      if (popupImg) popupImg.src = ""; // clear src after animation
+    }, 300);
+  }
+}
+
+// Event Listeners for Popup
+if (closeBtn) {
+  closeBtn.addEventListener("click", closeImagePopup);
+}
+
+if (imagePopup) {
+  imagePopup.addEventListener("click", (e) => {
+    if (e.target === imagePopup) {
+      closeImagePopup();
+    }
+  });
+}
+
+// Close on Escape key
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && imagePopup.classList.contains("active")) {
+    closeImagePopup();
+  }
+});

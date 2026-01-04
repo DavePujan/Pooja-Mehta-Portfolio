@@ -324,6 +324,60 @@ nav a:hover {
         transform: scale(1);
         opacity: 1;
     }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ===== Image Popup ===== */
+.image-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-popup.active {
+    display: flex;
+    opacity: 1;
+}
+
+.popup-image {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: var(--radius);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.image-popup.active .popup-image {
+    transform: scale(1);
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 3rem;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 10001;
+}
+
+.close-btn:hover {
+    color: var(--accent);
 }
 
 
