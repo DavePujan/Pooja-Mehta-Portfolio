@@ -5,6 +5,8 @@
     "medium": "Oil on canvas, 60×80 cm",
     "thumb": "/images/work-01.png",
     "image": "/images/work-01.png",
+    "price": "₹ 15,000",
+    "status": "Available",
     "insta": "https://www.instagram.com/your_art_account/"
   },
   {
@@ -13,6 +15,8 @@
     "medium": "Mixed media, 70×90 cm",
     "thumb": "/images/work-02.png",
     "image": "/images/work-02.png",
+    "price": "₹ 18,000",
+    "status": "Sold",
     "insta": "https://www.instagram.com/your_art_account/"
   },
   {
@@ -21,6 +25,8 @@
     "medium": "Acrylic on wood, 50×50 cm",
     "thumb": "/images/work-03.png",
     "image": "/images/work-03.png",
+    "price": "₹ 12,000",
+    "status": "In Sale",
     "insta": "https://www.instagram.com/your_art_account/"
   }
 ]

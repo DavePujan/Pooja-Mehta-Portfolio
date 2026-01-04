@@ -31,7 +31,13 @@ function renderGrid(data) {
         .replace(/"/g, "&quot;")}" />
         </a>
         <div class="card__body">
-          <h3 class="card__title">${item.title || "Untitled"}</h3>
+          <div class="card__header">
+             <h3 class="card__title">${item.title || "Untitled"}</h3>
+             ${item.status ? `<span class="card__status status--${item.status.toLowerCase().replace(/\s+/g, '-')}">${item.status}</span>` : ""}
+          </div>
+          
+          <div class="card__price">${item.price || ""}</div>
+
           ${
             item.insta
               ? `<a href="${item.insta}" target="_blank" rel="noopener" class="insta-link">
